@@ -2,8 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
-import Search from "./Componnents/Search/Search";
+//Router
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+// import Search from "./Componnents/Search/Search";
 import ContactList from "./Componnents/ContactList/ContactList";
+import NotFound from "./Componnents/NotFound/NotFound";
+import MainMenu from "./Componnents/MainMenu/MainMenu";
 
 class App extends React.Component {
   state = {
@@ -85,12 +90,23 @@ class App extends React.Component {
   render() {
     return (
       <div className="container bootstrap snippet">
-        <Search />
-        <ContactList
-          ContactList={this.state.List}
-          onBtnFavorite={this.onBtnFavorite}
-          onDelete={this.onDelete}
-        />
+        <Router>
+          <MainMenu></MainMenu>
+          <Switch>
+            <Route
+              path="/"
+              exact
+              render={() => (
+                <ContactList
+                  ContactList={this.state.List}
+                  onBtnFavorite={this.onBtnFavorite}
+                  onDelete={this.onDelete}
+                />
+              )}
+            ></Route>
+            <Route path="*" exact component={NotFound}></Route>
+          </Switch>
+        </Router>
       </div>
     );
   }

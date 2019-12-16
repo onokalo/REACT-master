@@ -1,6 +1,7 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "./ContactList.css";
 import ContactItem from "./ContactItem/ContactItem";
+import Search from "../Search/Search";
 
 const ContactList = ({ ContactList, onBtnFavorite, onDelete }) => {
   const contactItem = ContactList.map(item => {
@@ -18,7 +19,13 @@ const ContactList = ({ ContactList, onBtnFavorite, onDelete }) => {
     );
   });
 
-  return <div>{contactItem}</div>;
+  // return <div>{contactItem}</div>;
+  return (
+    <Fragment>
+      <Search></Search>
+      {contactItem}
+    </Fragment>
+  );
 };
 
 export default ContactList;
