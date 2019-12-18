@@ -13,20 +13,9 @@ const MainMenu = () => {
           <Link class="nav-item nav-link active" to="/">
             Home <span class="sr-only">(current)</span>
           </Link>
-          <a class="nav-item nav-link" href="#">
-            Features
-          </a>
-          <a class="nav-item nav-link" href="#">
-            Pricing
-          </a>
-          <a
-            class="nav-item nav-link disabled"
-            href="#"
-            tabindex="-1"
-            aria-disabled="true"
-          >
-            Disabled
-          </a>
+          <Link class="nav-item nav-link active" to="/add">
+            Add new contact
+          </Link>
         </div>
       </div>
     </nav>

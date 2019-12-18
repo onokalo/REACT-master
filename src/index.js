@@ -9,8 +9,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ContactList from "./Componnents/ContactList/ContactList";
 import NotFound from "./Componnents/NotFound/NotFound";
 import MainMenu from "./Componnents/MainMenu/MainMenu";
+import AddNewContact from "./Componnents/AddNewContact/AddNewContact";
 
 class App extends React.Component {
+  ID = 100;
+
   state = {
     List: [
       {
@@ -54,6 +57,18 @@ class App extends React.Component {
         favorite: false
       }
     ]
+  };
+
+  onEditContact = (name, description, avatar) => {
+    const newContact = {
+      id: this.ID++,
+      name: name,
+      description: description,
+      avatar: avatar,
+      gender: "women",
+      favorite: true
+    };
+    console.log("newContact ", newContact);
   };
 
   onBtnFavorite = id => {
@@ -102,6 +117,13 @@ class App extends React.Component {
                   onBtnFavorite={this.onBtnFavorite}
                   onDelete={this.onDelete}
                 />
+              )}
+            ></Route>
+            <Route
+              path="/add"
+              exact
+              component={() => (
+                <AddNewContact onEditContact={this.onEditContact} />
               )}
             ></Route>
             <Route path="*" exact component={NotFound}></Route>
